@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <style type="text/css">
+            rect.square.dark {
+                fill: #8ec1ef;
+            }
+            rect.square.light {
+                fill: #eeefe7
+            }
+        </style>
+        <py-env>
+        - chess
+        </py-env>
+        <py-script src="chess_script.py">
+        </py-script>
+        <script type="text/javascript">
+            var x = "";
+            var y = "";
+            function get_object() {
+                return x + y;
+            };
+            document.addEventListener('click', function (event) {
+                 xmap = {
+                    '0':'a',
+                    '1':'b',
+                    '2':'c',
+                    '3':'d',
+                    '4':'e',
+                    '5':'f',
+                    '6':'g',
+                    '7':'h',
+                }
+                ymap = {
+                    '0':'8',
+                    '1':'7',
+                    '2':'6',
+                    '3':'5',
+                    '4':'4',
+                    '5':'3',
+                    '6':'2',
+                    '7':'1',
+                }
+                if (!event.target.matches('use')) {
+                    x = "";
+                    y = "";
+                    return
+                };
+                piece = event.target.getAttribute('transform').match(/\d+/g);
+                x = xmap[(piece[0] - 15) / 45];
+                y = ymap[(piece[1] - 15) / 45];
+                //x = piece[0];
+                //y = piece[1];
+                //console.log('Clicked piece at: ' + x + y);
+            }, false);
+        </script>
+
+    </head>
+    <body>
+        <div class="container">
+            <br>
+            <h1 class="display-1">Chess Match Viewer</h1>
+            <br>
+            <div class="row"><h3 class="display-6">How about a nice game of chess?</h3></div>
+            <br>
+            <br>
+            <div class="row">
+                <div id="svg"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" viewBox="0 0 390 390" width="700" height="700"><rect x="0" y="0" width="390" height="390" fill="#30ac10" /></svg></div>
+                <pre id="text"></pre>
+            </div>
+            <br>
+            <div class="row">
+                <div id="title" class="fs-3 text">&nbsp;</div>
+                <br>
+                <br>
+                <div id="players" class="fs-4 text">&nbsp;</div>
+                <br>
+                <br>
+                <p id="move" class="fs-2 text">&nbsp;</p>
+            </div>
+            <br>
+            <div class="row"><select id="fileselect" class="form-select form-select-lg mb-3" style="margin-left: 12px; width: 700px;">
+                <option value=0>No match files loaded</option>
+            </select></div>
+            <br>
+            <div class="row"><select id="gameselect" class="form-select form-select-lg mb-3" style="margin-left: 12px; width: 700px;">
+                <option value=0>01 - White: ______ | Black: ______</option>
+            </select></div>
+            <br>
+            <div class="row">
+                <div style="width: 725px; height: 80px" class="d-grid gap-2"><button type="button" class="btn btn-primary fs-3 text" id="mainbutton" pys-onClick="watch">Watch</button></div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                    <h3 class="display-6">Made in <a href="https://www.python.org/">Python</a></h3><br><br>
+                    <h3 class="display-6">With <a href="https://pyscript.net/">PyScript</a> and <a href="https://python-chess.readthedocs.io/en/latest/index.html">Python-Chess</a></h3>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>
