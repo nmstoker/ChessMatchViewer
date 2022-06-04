@@ -1,17 +1,22 @@
 # ChessMatchViewer
 View chess matches in your browser
 
-
+![Application screenshot](Screenshot_20220531-023246.png)
 
 ## Usage
 
 The viewer can be seen [here](https://about.nmstoker.com/chess2.html) where it is hosted on [Github Pages](https://pages.github.com/)
 
-However since the pages are static, requiring nothing more than being served up to the user, they can be easily self-hosted in any of the usual ways.
+Since the pages are static, requiring nothing more than being served up to the user, they can be easily self-hosted in any of the usual ways.
 
-If you want to serve them up locally then, from the repo directory, it should be fine to run:
+If you want to serve them up locally then, it should be fine to run the following from the repo directly:
 
 `python3 -m http.server`
+
+- Point your browser at the main file, chess.html, give it a few moments to load
+- Select the match (and game if the PGN file has more than one)
+- Press Watch to start playback and Pause to pause it
+- Tapping on pieces shows their attack lines
 
 ## About
 
